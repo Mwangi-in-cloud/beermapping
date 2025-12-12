@@ -1,0 +1,10 @@
+services: 
+  beermapping:
+    image: cronosm4m/beermapping:latest 
+    ports:
+      - "3000:3000" 
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 60 --cleanup --no-restart --include beermapping  
